@@ -3,48 +3,47 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>3newPractic</title>
+	<title>textAnalyzer</title>
 
-js.Pr.St.TA №5
 
 
 	<style>
 
-	.calc{
-		font-family: fantasy;
-		margin: 20px auto;
-		padding: 0px 20px 30px;
-		width: 400px;
-		border: 3px solid blanchedalmond;
-		border-radius: 10px;
-		background: lightblue;
-		text-align: center;
-		border-radius: 10px;
-		box-shadow: 20px 20px 15px grey ;
-	}
-.calc input, textarea{
-text-align: right;
-border-bottom: 1px solid #F4F4F4;
-border-left: 1px solid #E0E0E0;
-border-radius: 5px;
-border-right: 1px solid #E0E0E0;
-border-top: 1px solid #C0C0C0;
-box-shadow: 0px 1px 1px #C9C9C9 inset;
-background: lightyellow;
-}
-.answer{
-	text-shadow: 2px 2px 2px blanchedalmond;
-}
-textarea{
-text-align: left;
-height: 50px;
-width: 80%;
-margin-top: 20px;
-}
-.checkboxes{
-	text-align: left;
-	margin: 0 40px;
-}
+		.calc{
+			font-family: fantasy;
+			margin: 20px auto;
+			padding: 0px 20px 30px;
+			width: 400px;
+			border: 3px solid blanchedalmond;
+			border-radius: 10px;
+			background: lightblue;
+			text-align: center;
+			border-radius: 10px;
+			box-shadow: 20px 20px 15px grey ;
+		}
+		.calc input, textarea{
+			text-align: right;
+			border-bottom: 1px solid #F4F4F4;
+			border-left: 1px solid #E0E0E0;
+			border-radius: 5px;
+			border-right: 1px solid #E0E0E0;
+			border-top: 1px solid #C0C0C0;
+			box-shadow: 0px 1px 1px #C9C9C9 inset;
+			background: lightyellow;
+		}
+		.answer{
+			text-shadow: 2px 2px 2px blanchedalmond;
+		}
+		textarea{
+			text-align: left;
+			height: 50px;
+			width: 80%;
+			margin-top: 20px;
+		}
+		.checkboxes{
+			text-align: left;
+			margin: 0 40px;
+		}
 
 	</style>
 </head>
@@ -102,56 +101,55 @@ margin-top: 20px;
 			}
 		});
 
-function amountWords(value){
-	let count=0;
-	for(let elem of value.split(' ')){
-		if (elem!=='') {
-			count++
-		}
-	}
-	return count
-}
-
-function amountSimbolsWithWhiteSpaces(value){
-	let count=0;
-	for(let elem of value.split('')){
-		for(let elem2 of elem.split('')){
-			if (elem2!=='') {
-				count++
+		function amountWords(value){
+			let count=0;
+			for(let elem of value.split(' ')){
+				if (elem!=='') {
+					count++
+				}
 			}
+			return count
 		}
-	}
-	return count
-}	
 
-function amountSimbols(value){
-	let count=0;
-	for(let elem of value.split(' ')){
-		for(let elem2 of elem.split('')){
-			if (elem2!=='') {
-				count++
+		function amountSimbolsWithWhiteSpaces(value){
+			let count=0;
+			for(let elem of value.split('')){
+				for(let elem2 of elem.split('')){
+					if (elem2!=='') {
+						count++
+					}
+				}
 			}
-		}
-	}
-	return count
-}
+			return count
+		}	
 
-function allChars(str){
-	let obj={};
-	for(let i=0; i<str.length; i++){
-		if(obj[str[i]]===undefined){
-			obj[str[i]]=0;
+		function amountSimbols(value){
+			let count=0;
+			for(let elem of value.split(' ')){
+				for(let elem2 of elem.split('')){
+					if (elem2!=='') {
+						count++
+					}
+				}
+			}
+			return count
 		}
-		obj[str[i]]++
-	}
-	return obj
-}
 
-function procentAllChars(obj,str){
-	let objProc={};
-	for(let key in obj){
-		objProc[ key]=Math.round((obj[key]/str.length*100)*10)/10
-		// console.log( key, obj[key],objProc[ obj[key]])
+		function allChars(str){
+			let obj={};
+			for(let i=0; i<str.length; i++){
+				if(obj[str[i]]===undefined){
+					obj[str[i]]=0;
+				}
+				obj[str[i]]++
+			}
+			return obj
+		}
+
+		function procentAllChars(obj,str){
+			let objProc={};
+			for(let key in obj){
+				objProc[ key]=Math.round((obj[key]/str.length*100)*10)/10
 	}
 	return objProc
 }
@@ -162,11 +160,10 @@ function objToStrWithPercent(obj){
 		str=str+key+': '+ obj[key]+'%'+', '
 	}
 	return str.slice(0, str.length-2)
- }
+}
 
-	</script>
+</script>
 
- 
+
 </body>
 
-<!-- m07Nu8V4P6fFr6lZ -->
