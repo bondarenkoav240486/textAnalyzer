@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>3newPractic</title>
+
+js.Pr.St.TA №5
+
+
+	<style>
+
+	.calc{
+		font-family: fantasy;
+		margin: 20px auto;
+		padding: 0px 20px 30px;
+		width: 400px;
+		border: 3px solid blanchedalmond;
+		border-radius: 10px;
+		background: lightblue;
+		text-align: center;
+		border-radius: 10px;
+		box-shadow: 20px 20px 15px grey ;
+	}
+.calc input, textarea{
+text-align: right;
+border-bottom: 1px solid #F4F4F4;
+border-left: 1px solid #E0E0E0;
+border-radius: 5px;
+border-right: 1px solid #E0E0E0;
+border-top: 1px solid #C0C0C0;
+box-shadow: 0px 1px 1px #C9C9C9 inset;
+background: lightyellow;
+}
+.answer{
+	text-shadow: 2px 2px 2px blanchedalmond;
+}
+textarea{
+text-align: left;
+height: 50px;
+width: 80%;
+margin-top: 20px;
+}
+.checkboxes{
+	text-align: left;
+	margin: 0 40px;
+}
+
+	</style>
+</head>
+<body>
+
+	<div class='calc '>
+		<h2 >Анализатор текста </h2>
+		<div class="checkboxes">
+			<div>
+				<input type='checkbox' class="checkbox1">сколько в этом тексте слов 
+			</div>
+			<div>
+				<input type='checkbox' class="checkbox2">сколько в тексте символов 
+			</div>
+			<div>
+				<input type='checkbox' class="checkbox3">сколько в тексте символов за вычетом пробелов
+			</div>
+			<div>
+				<input type='checkbox' class="checkbox4">сообщение о процентном содержании каждого символа в тексте 
+			</div>
+		</div>
+		<textarea name="" id="textarea" cols="30" rows="10"></textarea>
+		<div >
+			<h3 >Ответ:</h3>
+			<p class='answer'></p>
+		</div>
+	</div>
+
+	<script>
+
+		let textarea=document.querySelector('#textarea');
+		let answer=document.querySelector('.answer');
+		let checkbox4=document.querySelector('.checkbox4');
+		let checkbox1=document.querySelector('.checkbox1');
+		let checkbox2=document.querySelector('.checkbox2');
+		let checkbox3=document.querySelector('.checkbox3');
+		
+		textarea.addEventListener('blur', function listener(){
+			answer.innerHTML='';
+
+			if (checkbox1.checked) {
+				answer.innerHTML=  answer.innerHTML+amountWords(textarea.value)+'<br>';
+			}
+
+			if (checkbox2.checked) {
+				answer.innerHTML=  answer.innerHTML+amountSimbolsWithWhiteSpaces(textarea.value)+'<br>';
+			}
+			if (checkbox3.checked) {
+				answer.innerHTML=  answer.innerHTML+amountSimbols(textarea.value)+'<br>';
+			}
+
+			if (checkbox4.checked) {
+				let str=textarea.value.split(' ').join('');
+				answer.innerHTML=  answer.innerHTML+ objToStrWithPercent( procentAllChars(allChars(str),str) )+'<br>'; 
+			}
+		});
+
+function amountWords(value){
+	let count=0;
+	for(let elem of value.split(' ')){
+		if (elem!=='') {
+			count++
+		}
+	}
+	return count
+}
+
+function amountSimbolsWithWhiteSpaces(value){
+	let count=0;
+	for(let elem of value.split('')){
+		for(let elem2 of elem.split('')){
+			if (elem2!=='') {
+				count++
+			}
+		}
+	}
+	return count
+}	
+
+function amountSimbols(value){
+	let count=0;
+	for(let elem of value.split(' ')){
+		for(let elem2 of elem.split('')){
+			if (elem2!=='') {
+				count++
+			}
+		}
+	}
+	return count
+}
+
+function allChars(str){
+	let obj={};
+	for(let i=0; i<str.length; i++){
+		if(obj[str[i]]===undefined){
+			obj[str[i]]=0;
+		}
+		obj[str[i]]++
+	}
+	return obj
+}
+
+function procentAllChars(obj,str){
+	let objProc={};
+	for(let key in obj){
+		objProc[ key]=Math.round((obj[key]/str.length*100)*10)/10
+		// console.log( key, obj[key],objProc[ obj[key]])
+	}
+	return objProc
+}
+
+function objToStrWithPercent(obj){
+	let str='';
+	for(let key in obj){
+		str=str+key+': '+ obj[key]+'%'+', '
+	}
+	return str.slice(0, str.length-2)
+ }
+
+	</script>
+
+ 
+</body>
+
+<!-- m07Nu8V4P6fFr6lZ -->
